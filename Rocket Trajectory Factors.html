@@ -107,13 +107,594 @@
             margin-right: 10px;
             border-radius: 2px;
         }
+        
+        /* Documentation styles */
+        .doc-toggle {
+            background: #ff1744;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .doc-toggle:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+        }
+        .documentation-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            display: none;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .documentation-section.show {
+            display: block;
+        }
+        .documentation-section h1 {
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .documentation-section h2 {
+            color: #4ecdc4;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #4ecdc4;
+            padding-bottom: 5px;
+        }
+        .documentation-section h3 {
+            color: #ffd700;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+        .documentation-section h4 {
+            color: #45b7d1;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        .documentation-section p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .documentation-section ul, .documentation-section ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        .documentation-section li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .formula-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .formula-box .formula {
+            font-size: 1.5em;
+            font-family: 'Courier New', monospace;
+            color: #ffd700;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .variable-list {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .variable-list strong {
+            color: #4ecdc4;
+        }
+        .impact-level-doc {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        .impact-bar-doc {
+            width: 80px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin-left: 10px;
+            overflow: hidden;
+        }
+        .impact-fill-doc {
+            height: 100%;
+            border-radius: 3px;
+        }
+        .high-doc { background: #ff4444; }
+        .medium-doc { background: #ffaa44; }
+        .low-doc { background: #44ff44; }
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Documentation section removed as requested -->
         <div class="header">
             <h1>🚀 Rocket Trajectory Prediction System</h1>
             <p>Interactive visualization of interdependent factors affecting rocket accuracy</p>
+            <button class="doc-toggle" onclick="toggleDocumentation()">📚 View Comprehensive Documentation</button>
+        </div>
+
+        <!-- Comprehensive Documentation Section -->
+        <div class="documentation-section" id="documentation">
+            <h1>Rocket Trajectory Prediction System: Comprehensive Documentation</h1>
+            
+            <h2>Overview and Introduction</h2>
+            <p>The Rocket Trajectory Prediction System is an interactive visualization tool designed to help understand the complex interdependencies between various factors that affect rocket flight accuracy. This system models how different physical forces, environmental conditions, and rocket characteristics interact to determine the final trajectory and landing accuracy of a rocket.</p>
+            
+            <p>Rocket trajectory prediction is a critical aspect of aerospace engineering, used in everything from space exploration missions to military applications and commercial satellite launches. Understanding these factors is essential for mission planning, safety assessments, and optimizing launch parameters.</p>
+
+            <h2>Core Mathematical Framework</h2>
+            <h3>Primary Trajectory Impact Formula</h3>
+            <p>The foundation of this prediction system is based on the following mathematical relationship:</p>
+            
+            <div class="formula-box">
+                <strong>Formula:</strong><br>
+                <div class="formula">(WVi) / (Θ A G)</div>
+                <p>This formula represents the <strong>Trajectory Impact Factor</strong>, which quantifies how various forces interact to affect rocket accuracy.</p>
+            </div>
+
+            <h4>Variable Definitions:</h4>
+            <div class="variable-list">
+                <p><strong>W</strong>: Wind speed (m/s) - The velocity of atmospheric air movement</p>
+                <p><strong>Vi</strong>: Initial velocity (m/s) - The rocket's velocity at launch</p>
+                <p><strong>Θ (Theta)</strong>: Launch angle (degrees) - The angle between the rocket's initial trajectory and the horizontal plane</p>
+                <p><strong>A</strong>: Air resistance coefficient - A dimensionless factor representing aerodynamic drag</p>
+                <p><strong>G</strong>: Gravitational acceleration (m/s²) - The downward acceleration due to Earth's gravity</p>
+            </div>
+
+            <h4>Formula Interpretation:</h4>
+            <p>This formula expresses the ratio of momentum-related forces (wind speed × initial velocity) to resistance forces (launch angle × air resistance × gravity). A higher value indicates greater potential for trajectory deviation, while lower values suggest more stable flight paths.</p>
+
+            <p><strong>When to Use:</strong> This formula is most applicable for:</p>
+            <ul>
+                <li>Initial trajectory planning</li>
+                <li>Quick impact assessments</li>
+                <li>Comparative analysis between different launch scenarios</li>
+                <li>Educational understanding of factor interactions</li>
+            </ul>
+
+            <h4>Example Calculation:</h4>
+            <p>Given:</p>
+            <ul>
+                <li>Wind speed (W) = 10 m/s</li>
+                <li>Initial velocity (Vi) = 100 m/s</li>
+                <li>Launch angle (Θ) = 45°</li>
+                <li>Air resistance (A) = 0.3</li>
+                <li>Gravity (G) = 9.81 m/s²</li>
+            </ul>
+            <div class="code-block">
+                Trajectory Impact Factor = (10 × 100) / (45 × 0.3 × 9.81) = 1000 / 132.435 = 7.55
+            </div>
+            <p>This relatively high value indicates significant potential for trajectory deviation under these conditions.</p>
+
+            <h2>Primary Trajectory Factors</h2>
+            
+            <h3>1. Initial Velocity (Vi)</h3>
+            <p><strong>Definition:</strong> The speed at which the rocket leaves the launch platform, measured in meters per second (m/s).</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc high-doc" style="width: 95%;"></div>
+                </div>
+                <span>95%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Initial velocity is the most critical factor in trajectory prediction. It determines the rocket's kinetic energy and directly influences:</p>
+            <ul>
+                <li>Maximum altitude achieved</li>
+                <li>Range of the trajectory</li>
+                <li>Time of flight</li>
+                <li>Susceptibility to environmental disturbances</li>
+            </ul>
+            
+            <p><strong>Physical Relationship:</strong> Higher initial velocities generally lead to more stable trajectories because they reduce the relative impact of environmental factors. However, they also increase air resistance effects.</p>
+
+            <h3>2. Launch Angle (Θ)</h3>
+            <p><strong>Definition:</strong> The angle between the rocket's initial flight path and the horizontal plane, measured in degrees.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc high-doc" style="width: 90%;"></div>
+                </div>
+                <span>90%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Launch angle is the second most critical factor. It determines:</p>
+            <ul>
+                <li>The shape of the trajectory arc</li>
+                <li>Maximum altitude vs. horizontal range trade-offs</li>
+                <li>Optimal angle for specific target distances</li>
+            </ul>
+            
+            <p><strong>Physical Relationship:</strong> The optimal launch angle depends on the target distance. For maximum range without air resistance, 45° is optimal. However, with air resistance, the optimal angle is typically between 30-40°.</p>
+
+            <h3>3. Gravity (G)</h3>
+            <p><strong>Definition:</strong> The gravitational acceleration acting on the rocket, approximately 9.81 m/s² on Earth's surface.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc high-doc" style="width: 85%;"></div>
+                </div>
+                <span>85%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Gravity is the primary force causing the rocket to follow a curved trajectory rather than a straight line.</p>
+            
+            <p><strong>Physical Relationship:</strong> Gravity acts constantly downward, causing the rocket's vertical velocity to decrease during ascent and increase during descent. It's the fundamental force that creates the parabolic trajectory shape.</p>
+
+            <h2>Environmental Variables</h2>
+            
+            <h3>1. Air Resistance (A)</h3>
+            <p><strong>Definition:</strong> A dimensionless coefficient representing the aerodynamic drag force acting on the rocket.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc medium-doc" style="width: 70%;"></div>
+                </div>
+                <span>70%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Air resistance significantly affects trajectory, especially at higher velocities.</p>
+            
+            <p><strong>Physical Relationship:</strong> Air resistance is proportional to the square of velocity and depends on:</p>
+            <ul>
+                <li>Rocket shape and surface area</li>
+                <li>Air density</li>
+                <li>Surface roughness</li>
+                <li>Mach number (velocity relative to speed of sound)</li>
+            </ul>
+            
+            <p><strong>Formula Component:</strong> The air resistance coefficient (A) in our main formula represents the combined effect of these aerodynamic factors.</p>
+
+            <h3>2. Wind Speed (W)</h3>
+            <p><strong>Definition:</strong> The velocity of atmospheric air movement relative to the ground, measured in m/s.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc medium-doc" style="width: 65%;"></div>
+                </div>
+                <span>65%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Wind speed can cause significant trajectory deviations, especially during the initial phase of flight.</p>
+            
+            <p><strong>Physical Relationship:</strong> Wind affects the rocket through:</p>
+            <ul>
+                <li>Direct force application during flight</li>
+                <li>Changes in effective air resistance</li>
+                <li>Crosswind effects that can cause lateral drift</li>
+            </ul>
+
+            <h3>3. Air Density (ρ)</h3>
+            <p><strong>Definition:</strong> The mass of air per unit volume, typically measured in kg/m³.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc medium-doc" style="width: 55%;"></div>
+                </div>
+                <span>55%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Air density directly affects air resistance magnitude.</p>
+            
+            <p><strong>Physical Relationship:</strong> Air density varies with:</p>
+            <ul>
+                <li>Altitude (decreases with height)</li>
+                <li>Temperature (warmer air is less dense)</li>
+                <li>Humidity (moist air is less dense than dry air)</li>
+                <li>Atmospheric pressure</li>
+            </ul>
+            
+            <p><strong>Mathematical Relationship:</strong> Air resistance force = 0.5 × ρ × v² × Cd × A</p>
+            <p>Where: ρ = air density, v = velocity, Cd = drag coefficient, A = cross-sectional area</p>
+
+            <h3>4. Temperature</h3>
+            <p><strong>Definition:</strong> The ambient air temperature, measured in Celsius or Kelvin.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc low-doc" style="width: 30%;"></div>
+                </div>
+                <span>30%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Temperature primarily affects air density and thus air resistance.</p>
+            
+            <p><strong>Physical Relationship:</strong> Higher temperatures result in:</p>
+            <ul>
+                <li>Lower air density</li>
+                <li>Reduced air resistance</li>
+                <li>Changes in atmospheric pressure</li>
+                <li>Potential effects on rocket engine performance</li>
+            </ul>
+
+            <h3>5. Humidity</h3>
+            <p><strong>Definition:</strong> The amount of water vapor in the air, typically expressed as relative humidity percentage.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc low-doc" style="width: 20%;"></div>
+                </div>
+                <span>20%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Humidity has relatively minor direct effects on trajectory.</p>
+            
+            <p><strong>Physical Relationship:</strong> Humidity affects:</p>
+            <ul>
+                <li>Air density (moist air is less dense)</li>
+                <li>Atmospheric pressure</li>
+                <li>Potential condensation effects on rocket surfaces</li>
+            </ul>
+
+            <h2>Rocket Characteristics</h2>
+            
+            <h3>1. Mass (m)</h3>
+            <p><strong>Definition:</strong> The total mass of the rocket, including fuel, payload, and structure, measured in kilograms.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc high-doc" style="width: 80%;"></div>
+                </div>
+                <span>80%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Mass directly affects the rocket's response to forces.</p>
+            
+            <p><strong>Physical Relationship:</strong> Mass influences:</p>
+            <ul>
+                <li>Acceleration (F = ma)</li>
+                <li>Momentum (p = mv)</li>
+                <li>Inertia and resistance to trajectory changes</li>
+                <li>Fuel consumption rates</li>
+            </ul>
+            
+            <p><strong>Newton's Second Law Application:</strong> The rocket's acceleration is inversely proportional to its mass for a given force.</p>
+
+            <h3>2. Shape/Drag Coefficient (Cd)</h3>
+            <p><strong>Definition:</strong> A dimensionless number representing the aerodynamic efficiency of the rocket's shape.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc medium-doc" style="width: 60%;"></div>
+                </div>
+                <span>60%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Shape and drag coefficient directly affect air resistance.</p>
+            
+            <p><strong>Physical Relationship:</strong> The drag coefficient depends on:</p>
+            <ul>
+                <li>Rocket nose shape (pointed vs. blunt)</li>
+                <li>Body geometry (streamlined vs. irregular)</li>
+                <li>Surface finish (smooth vs. rough)</li>
+                <li>Reynolds number (velocity × size / viscosity)</li>
+            </ul>
+            
+            <p><strong>Typical Values:</strong></p>
+            <ul>
+                <li>Streamlined rocket: Cd ≈ 0.1-0.3</li>
+                <li>Blunt-nosed rocket: Cd ≈ 0.4-0.8</li>
+                <li>Irregular shape: Cd > 1.0</li>
+            </ul>
+
+            <h3>3. Spin Rate</h3>
+            <p><strong>Definition:</strong> The rotational velocity of the rocket around its longitudinal axis, measured in revolutions per minute (RPM).</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc low-doc" style="width: 40%;"></div>
+                </div>
+                <span>40%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Spin rate provides gyroscopic stability but potentially affects trajectory.</p>
+            
+            <p><strong>Physical Relationship:</strong> Spin affects:</p>
+            <ul>
+                <li>Gyroscopic stability (reduces tumbling)</li>
+                <li>Magnus force effects</li>
+                <li>Energy dissipation</li>
+                <li>Potential resonance with aerodynamic forces</li>
+            </ul>
+
+            <h3>4. Surface Roughness</h3>
+            <p><strong>Definition:</strong> The microscopic irregularities on the rocket's surface, affecting boundary layer behavior.</p>
+            
+            <div class="impact-level-doc">
+                <span>Impact Level:</span>
+                <div class="impact-bar-doc">
+                    <div class="impact-fill-doc low-doc" style="width: 25%;"></div>
+                </div>
+                <span>25%</span>
+            </div>
+            
+            <p><strong>Significance:</strong> Surface roughness primarily affects air resistance.</p>
+            
+            <p><strong>Physical Relationship:</strong> Rough surfaces can:</p>
+            <ul>
+                <li>Increase turbulent boundary layer formation</li>
+                <li>Increase skin friction drag</li>
+                <li>Affect heat transfer</li>
+                <li>Influence transition from laminar to turbulent flow</li>
+            </ul>
+
+            <h2>Prediction Accuracy Methods</h2>
+            
+            <h3>1. Ballistic Trajectory</h3>
+            <p><strong>Definition:</strong> A simplified trajectory calculation assuming only gravity and initial velocity, ignoring air resistance and other forces.</p>
+            
+            <p><strong>Formula:</strong> For projectile motion without air resistance:</p>
+            <div class="code-block">
+                Horizontal position: x(t) = v₀ₓ × t<br>
+                Vertical position: y(t) = v₀ᵧ × t - 0.5 × g × t²<br><br>
+                Where:<br>
+                v₀ₓ = initial horizontal velocity = v₀ × cos(θ)<br>
+                v₀ᵧ = initial vertical velocity = v₀ × sin(θ)<br>
+                t = time<br>
+                g = gravitational acceleration
+            </div>
+            
+            <p><strong>When to Use:</strong> Quick estimates, educational purposes, or when air resistance is negligible.</p>
+            <p><strong>Limitations:</strong> Significantly underestimates trajectory complexity in real-world conditions.</p>
+
+            <h3>2. Numerical Integration</h3>
+            <p><strong>Definition:</strong> A computational method that solves differential equations step-by-step, accounting for changing conditions throughout flight.</p>
+            
+            <p><strong>Process:</strong></p>
+            <ol>
+                <li>Divide flight time into small time steps (Δt)</li>
+                <li>Calculate forces at each step</li>
+                <li>Update velocity and position using:
+                    <div class="code-block">
+                        v(t+Δt) = v(t) + a(t) × Δt<br>
+                        s(t+Δt) = s(t) + v(t) × Δt + 0.5 × a(t) × Δt²
+                    </div>
+                </li>
+            </ol>
+            
+            <p><strong>Advantages:</strong> Accounts for variable forces, changing air density, and complex interactions.</p>
+            <p><strong>When to Use:</strong> Detailed trajectory analysis, mission planning, and when high accuracy is required.</p>
+
+            <h3>3. Monte Carlo Analysis</h3>
+            <p><strong>Definition:</strong> A statistical method that runs multiple simulations with randomly varied input parameters to assess uncertainty and risk.</p>
+            
+            <p><strong>Process:</strong></p>
+            <ol>
+                <li>Define probability distributions for uncertain parameters</li>
+                <li>Generate random samples from these distributions</li>
+                <li>Run trajectory simulations for each sample</li>
+                <li>Analyze the distribution of outcomes</li>
+            </ol>
+            
+            <p><strong>Advantages:</strong> Provides uncertainty quantification, identifies critical parameters, and assesses mission risk.</p>
+            <p><strong>When to Use:</strong> Risk assessment, mission planning under uncertainty, and sensitivity analysis.</p>
+
+            <h3>4. Real-time Corrections</h3>
+            <p><strong>Definition:</strong> Continuous trajectory adjustments during flight using GPS, inertial sensors, and other feedback systems.</p>
+            
+            <p><strong>Components:</strong></p>
+            <ul>
+                <li>GPS positioning for location tracking</li>
+                <li>Inertial measurement units (IMUs) for attitude</li>
+                <li>Air data sensors for environmental conditions</li>
+                <li>Control systems for trajectory adjustments</li>
+            </ul>
+            
+            <p><strong>Advantages:</strong> Compensates for unmodeled effects, improves accuracy, and enables mid-course corrections.</p>
+            <p><strong>When to Use:</strong> Precision missions, guided systems, and when real-time control is available.</p>
+
+            <h2>Factor Interdependency Network</h2>
+            <p>The interactive network visualization shows how different factors influence each other and ultimately affect target accuracy. The network reveals several key relationships:</p>
+            
+            <h3>High-Impact Relationships (Red connections):</h3>
+            <ul>
+                <li>Initial velocity → Target accuracy</li>
+                <li>Launch angle → Target accuracy</li>
+                <li>Gravity → Target accuracy</li>
+                <li>Air density → Air resistance</li>
+                <li>Shape/drag coefficient → Air resistance</li>
+                <li>Initial velocity → Air resistance</li>
+            </ul>
+
+            <h3>Medium-Impact Relationships (Teal connections):</h3>
+            <ul>
+                <li>Air resistance → Target accuracy</li>
+                <li>Wind speed → Target accuracy</li>
+                <li>Temperature → Air density</li>
+                <li>Wind speed → Air resistance</li>
+                <li>Mass → Air resistance</li>
+            </ul>
+
+            <h3>Low-Impact Relationships (Blue connections):</h3>
+            <ul>
+                <li>Humidity → Air density</li>
+                <li>Temperature → Wind speed</li>
+                <li>Mass → Gravity</li>
+                <li>Spin rate and surface roughness (indirect effects)</li>
+            </ul>
+
+            <h2>Practical Applications</h2>
+            
+            <h3>Mission Planning</h3>
+            <p>Understanding these factors is crucial for:</p>
+            <ul>
+                <li>Selecting optimal launch windows</li>
+                <li>Choosing appropriate rocket designs</li>
+                <li>Planning trajectory corrections</li>
+                <li>Assessing mission risk</li>
+            </ul>
+
+            <h3>Educational Value</h3>
+            <p>This system helps students and professionals understand:</p>
+            <ul>
+                <li>Physics principles in aerospace applications</li>
+                <li>Complex system interactions</li>
+                <li>Trade-offs between different design parameters</li>
+                <li>The importance of environmental considerations</li>
+            </ul>
+
+            <h3>Engineering Design</h3>
+            <p>Factors guide decisions in:</p>
+            <ul>
+                <li>Rocket shape optimization</li>
+                <li>Material selection</li>
+                <li>Control system design</li>
+                <li>Launch site selection</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>The Rocket Trajectory Prediction System demonstrates the complex interdependencies between physical forces, environmental conditions, and rocket characteristics that determine flight accuracy. The mathematical framework provided, particularly the trajectory impact formula <span class="highlight">(WVi) / (Θ A G)</span>, offers a foundation for understanding these relationships.</p>
+            
+            <p>By recognizing that initial velocity and launch angle have the highest impact levels, engineers can focus their optimization efforts on these critical parameters while still considering the significant effects of environmental variables and rocket characteristics. The various prediction methods provide tools for different levels of analysis, from quick estimates to detailed mission planning.</p>
+            
+            <p>This comprehensive understanding of trajectory factors is essential for successful rocket missions, whether for scientific research, commercial applications, or space exploration.</p>
         </div>
 
         <div class="graph-container">
@@ -372,6 +953,22 @@
                 }
                 return `${d.name.replace('\n', ' ')}: Affects trajectory through interconnected relationships`;
             });
+
+        // Documentation toggle function
+        function toggleDocumentation() {
+            const docSection = document.getElementById('documentation');
+            const toggleButton = document.querySelector('.doc-toggle');
+            
+            if (docSection.classList.contains('show')) {
+                docSection.classList.remove('show');
+                toggleButton.textContent = '📚 View Comprehensive Documentation';
+                toggleButton.style.background = '#ffd700';
+            } else {
+                docSection.classList.add('show');
+                toggleButton.textContent = '📖 Hide Documentation';
+                toggleButton.style.background = '#ff6b6b';
+            }
+        }
     </script>
 </body>
 </html>
